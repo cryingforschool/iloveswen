@@ -1,0 +1,137 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1>Houkeeping</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title"><strong>Housekeepings</strong></h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: housekeepings">
+                    <li>
+                        <p>
+                            <sub>[<span data-bind="text: HousekeepingId"></span>]</sub><strong></strong><br>
+                            <font color="Royalblue">
+                                <small>
+                                    Housekeeping&nbsp;<span data-bind="text: HousekeepingId"></span><br>
+                                    DutyDate:&nbsp;<span data-bind="text: DutyDate"></span><br>
+                                    DutyStartTime:&nbsp;<span data-bind="text: DutyStartTime"></span><br>
+                                    DutyEndTime:&nbsp;<span data-bind="text: DutyEndTime"></span><br>
+                                    NoOfHrs:&nbsp;<span data-bind="text: NoOfHrs"></span><br>
+                                    NoOfAssignedRooms:&nbsp;<span data-bind="text: NoOfAssignedRooms"></span><br>
+                                    StaffId:&nbsp;<span data-bind="text: StaffId"></span><br>
+                                </small>
+                            </font>
+                        </p>
+                        <div>
+                            <span><button class="btn btn-danger" data-bind="click: $parent.deleteHousekeeping" onclick="alert('Deleted')">Delete</button></span>
+                            <span></span>
+                            <span><button class="btn btn-default" data-bind="click: $parent.populateHousekeepingsForUpdate">Edit</button><br></span>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+
+
+    <div style="position:fixed" class="col-md-5 col-md-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title"><strong>Add/Update Housekeeping</strong></h2>
+            </div>
+
+            <div class="panel-body">
+                <!--<form class="form-horizontal" data-bind="submit: addHousekeeping">-->
+                <div class="form-group" data-bind="with: newHousekeeping">
+                    <label for="inputHousekeepingId" class="col-sm-4 control-label">Housekeeping No</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputHousekeepingId" data-bind="value:HousekeepingId" placeholder="Housekeeping Id" />
+                    </div>
+
+                    <label for="inputDutyDate" class="col-sm-4 control-label">Duty&nbsp;date</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputDutyDate" data-bind="value:DutyDate" placeholder="e.g. 18/06/2016" />
+                    </div>
+
+                    <label for="inputDutyStartTime" class="col-sm-4 control-label">Start&nbsp;Time</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputDutyStartTime" data-bind="value:DutyStartTime" placeholder="e.g. 23:59" />
+                    </div>
+
+                    <label for="inputDutyEndTime" class="col-sm-4 control-label">End&nbsp;Time</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputDutyEndTime" data-bind="value:DutyEndTime" placeholder="e.g. 2359" />
+                    </div>
+
+                    <label for="inputNoOfHrs" class="col-sm-4 control-label">No Of Hours</label>
+                    <div class="col-sm-8">
+                        <input type="number" step="any" class="form-control" id="inputNoOfHrs" data-bind="value:NoOfHrs" placeholder=" Hours/ day e.g. 1" />
+                    </div>
+
+                    <label for="inputNoOfAssignedRooms" class="col-sm-4 control-label">Assigned&nbsp;Rooms</label>
+                    <div class="col-sm-8">
+                        <input type="number" step="any" class="form-control" id="inputNoOfAssignedRooms" data-bind="value:NoOfAssignedRooms" placeholder="e.g 1" />
+                    </div>
+
+                    <label for="inputStaffId" class="col-sm-4 control-label">Staff&nbsp;Id</label>
+                    <div class="col-sm-8">
+                        <input type="number" step="any" class="form-control" id="inputStaffId" data-bind="value:StaffId" placeholder="e.g 1" />
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
+                        <div class="col-sm-8">
+                        </div>
+                        <div class="col-md-3">
+                            <span><button class="btn btn-success" data-bind="click: $parent.addHousekeeping" onclick="alert('Added')">Add</button></span>
+                            <span></span>
+                            <span><button class="btn btn-primary" data-bind="click: $parent.updateHousekeeping" onclick="alert('Updated')">Update</button></span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

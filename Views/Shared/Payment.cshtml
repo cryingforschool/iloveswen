@@ -1,0 +1,136 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1>Payment</h1>
+</div>
+
+<div class="col-md-3"></div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row display-tr">
+                            <div class="inline-block">
+                                <p><font size="5"><strong>&nbsp;&nbsp;&nbsp;Payment Details</strong></font><img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+             
+                        <div class="form-group" data-bind="with: newPayment">
+                           
+                            <p><font size="4"><strong>&nbsp;&nbsp;&nbsp;Billing Information</strong></font></p>
+                            <hr />
+
+                            <label for="inputFirstName" class="col-sm-4 control-label">First Name*</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputFirstName" data-bind="value:FirstName" placeholder="Enter first name" />
+                            </div>
+
+                            <label for="inputLastName" class="col-sm-4 control-label">Last Name*</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" required id="inputLastName" data-bind="value:LastName" placeholder=" Enter last name" />
+                            </div>
+
+                            <label for="inputBillingAddress" class="col-sm-4 control-label">Address*</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputBillingAddress" data-bind="value:BillingAddress" placeholder=" Enter street address" />
+                            </div>
+
+                            <label for="inputBillingPostal" class="col-sm-4 control-label">Postal Code*</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="inputBillingPostal" data-bind="value:BillingPostal" placeholder=" Enter postal code" />
+                            </div>
+
+                            <label for="inputBillingCity" class="col-sm-4 control-label">City*</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="BillingCity" data-bind="value:BillingCity" placeholder=" Enter city" />
+                            </div>
+
+                            <label for="inputBillingEmail" class="col-sm-4 control-label">Email Address*</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="inputBillingEmail" data-bind="value:BillingEmail" placeholder=" Enter email address" />
+                                </div>
+                            
+                            <p><font size="4"><strong>&nbsp;&nbsp;&nbsp;Card Information</strong></font></p>
+                            <hr />
+
+                            <label for="inputNameOnCard" class="col-sm-4 control-label">Cardholder Name*</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputNameOnCard" data-bind="value:NameOnCard" placeholder="Enter name as displayed on card" />
+                            </div>
+
+                            <label for="inputCardNo" class="col-sm-4 control-label">Card Number*</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputCardNo" data-bind="value:CardNo" placeholder="Enter card number" />
+                            </div>
+
+
+                            <label for="inputExpiryMonth" class="col-sm-4 control-label">Expiry Month*</label>
+                            <div class="col-sm-8">
+                                <input type="number" min="01" max="12" class="form-control" id="inputExpiryMonth" data-bind="value:ExpiryMonth" placeholder="e.g. 01" />
+                            </div>
+
+
+                            <label for="inputExpiryYear" class="col-sm-4 control-label">Expiry Year*</label>
+                            <div class="col-sm-8">
+                                <input type="number" min="16" max="25" class="form-control" id="inputExpiryYear" data-bind="value:ExpiryYear" placeholder="e.g. 15" />
+                            </div>
+
+
+                            <label for="inputCvc" class="col-sm-4 control-label">CVC*</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="inputCvc" data-bind="value:Cvc" placeholder="Enter digits found behind card" />
+                            </div>
+                            
+                            <label for="inputCouponCode" class="col-sm-4 control-label">Coupon Code</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputCouponCode" data-bind="value:CouponCode" placeholder="Enter Coupon Code (optional)" />
+                            </div>
+
+                        
+
+                            <div class=" col-lg-12">*This is a required field</div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-12">
+                                </div>
+                                <div class="col-sm-8">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <button class="btn btn-success btn-block" data-bind="click: $parent.addPayment" onclick="parent.location = 'http://localhost:56128/Shared/SucessPayment'">Submit</button>
+                                </div>
+
+                               
+                            </div>
+
+
+                       </div>
+                    </div>
+
+
+                </div>
+           
+

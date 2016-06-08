@@ -1,0 +1,130 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1>Staff Management</h1>
+</div>
+
+
+@*SHOW LIST OF STAFFS*@
+
+<div class=" row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title"><strong>Staffs</strong></h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: staffs">
+                    <li>
+                        <p>
+                            <strong><span data-bind="text: StaffName"></span></strong><br>
+                            <small>
+                                <b>Mobile&nbsp;No:&nbsp;</b><span data-bind="text: MobileNo"></span><br>
+                                <b>Date&nbsp;of&nbsp;birth:&nbsp;</b><span data-bind="text: DateOfBirth"></span><br>
+                                <b>Account&nbsp;No:&nbsp;</b><span data-bind="text: AccountNo"></span><br>
+                                <b>Home&nbsp;Address:&nbsp;</b><span data-bind="text: HomeAddress"></span><br>
+                                <b>Postal&nbsp;Code:&nbsp;</b><span data-bind="text: PostalCode"></span><br>
+                                <b>Duty&nbsp;Type:&nbsp;</b><span data-bind="text: DutyType"></span><br>
+                            </small>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <span><button class="btn btn-danger" data-bind="click: $parent.deleteStaff" onclick="alert('Deleted')">Delete</button></span>
+                                <span></span>
+                                <span><button class="btn btn-default" data-bind="click: $parent.populateStaffsForUpdate">Edit</button><br></span> 
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+
+    @*ADD/UPDATE STAFF*@
+
+    <div style="position:fixed" class="col-md-5 col-md-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title"><strong>Add/Update Staff</strong></h2>
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group" data-bind="with: newStaff">
+
+                    <label for="inputStaffName" class="col-sm-2 control-label">Staff&nbsp;Name</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" id="inputStaffName" data-bind="value:StaffName" placeholder="e.g. Mary Tan" />
+                    </div>
+
+                    <label for="inputMobileNo" class="col-sm-2 control-label">Mobile&nbsp;No</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" id="inputMobileNo" data-bind="value:MobileNo" placeholder="e.g. 93678356" />
+                    </div>
+
+                    <label for="inputDateOfBirth" class="col-sm-2 control-label">Date&nbsp;Of&nbsp;Birth</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" id="inputDateOfBirth" data-bind="value:DateOfBirth" placeholder="e.g. 21 November 1997" />
+                    </div>
+
+                    <label for="inputAccountNo" class="col-sm-2 control-label">Account&nbsp;No</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" id="inputAccountNo" data-bind="value:AccountNo" placeholder="e.g. 1234-5678-9876-5432" />
+                    </div>
+
+                    <label for="inputHomeAddress" class="col-sm-2 control-label">Home&nbsp;Address</label>
+                    <div class="col-sm-11">
+                        <input type="text" step="any" class="form-control" id="inputHomeAddress" data-bind="value:HomeAddress" placeholder="e.g. Blk 137, Jalan Bukit Merah #02-1384" />
+                    </div>
+
+                    <label for="inputPostalCode" class="col-sm-2 control-label">Postal&nbsp;Code</label>
+                    <div class="col-sm-11">
+                        <input type="text" step="any" class="form-control" id="inputPostalCode" data-bind="value:PostalCode" placeholder="e.g. 160137" />
+                    </div>
+
+                    <label for="inputDutyType" class="col-sm-2 control-label">Duty&nbsp;Type</label>
+                    <div class="col-sm-11">
+                        <input type="text" step="any" class="form-control" id="inputDutyType" data-bind="value:DutyType" placeholder="e.g. general maintenance" /><br>
+                    </div>
+
+                    <div class=" col-lg-12">&nbsp;</div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-8">
+                        </div>
+
+                        <div class="col-md-3">
+                            <span><button class="btn btn-success" data-bind="click: $parent.addStaff" onclick="alert('Added')">Add</button></span>  
+                            <span></span>
+                            <span><button class="btn btn-primary" data-bind="click: $parent.updateStaff" onclick="alert('Updated')">Update</button></span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+

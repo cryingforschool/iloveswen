@@ -1,0 +1,136 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-header">
+    <h1>Room Bookings</h1>
+</div>
+
+<div class="btn-group btn-group-justified">
+    <a href="#" class="btn btn-info" onclick="parent.location = 'http://localhost:56128/Shared/ManageBookings'">Bookings</a>
+    <a href="#" class="btn btn-info" onclick="parent.location = 'http://localhost:56128/Shared/ManageRooms'">Rooms</a>
+    <a href="#" class="btn btn-info" onclick="parent.location = 'http://localhost:56128/Shared/ManagePayments'">Payments</a>
+</div>
+
+<div class="col-lg-12">&nbsp;</div>
+<div class="col-lg-12">&nbsp;</div>
+
+
+<div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Rooms</h2>
+        </div>
+        <div class="panel-body">
+            <ul class="list-unstyled" data-bind="foreach: rooms">
+                <li>
+                    Room&nbsp;ID:&nbsp;<span data-bind="text: RoomId"></span><br />
+                    Room&nbsp;No.:&nbsp;<span data-bind="text: RoomNo"></span><br>
+                    Floor&nbsp;No.:&nbsp;<span data-bind="text: FloorNo"></span><br>
+                    Room&nbsp;Status:&nbsp;<span data-bind="text: RoomStatus"></span><br>
+                    Room&nbsp;Type:&nbsp;<span data-bind="text: RoomType"></span><br>
+                    Room&nbsp;Capacity:&nbsp;<span data-bind="text: RoomCapacity"></span><br>
+                    Room&nbsp;Description:&nbsp;<span data-bind="text: RoomDescription"></span><br>
+                    Room&nbsp;Price:&nbsp;$&nbsp;<span data-bind="text: RoomPrice"></span><br>
+                    <hr />
+
+                    <div class="col-sm-12">
+
+                        <span><button class="btn btn-danger" data-bind="click: $parent.deleteRoom" onclick="alert('Deleted')">Delete</button></span>
+                        <span></span>
+                        <span><button class="btn btn-default" data-bind="click: $parent.populateRoomsForUpdate">Edit</button></span>
+                        
+                        
+                        <hr />
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+</div>
+
+
+<div style="position:fixed" class="col-md-5 col-md-offset-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><strong>Add/Update Room</strong></h2>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="form-group" data-bind="with: newRoom">
+                <label for="inputRoomNo" class="col-sm-4 control-label">Room&nbsp;No.</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="inputRoomNo" data-bind="value:RoomNo" />
+                </div>
+
+                <label for="inputFloorNo" class="col-sm-4 control-label">Floor&nbsp;No.</label>
+                <div class="col-sm-8">
+                    <input type="number" min="01" max="20" step="any" class="form-control" id="inputFloorNo" data-bind="value:FloorNo" />
+                </div>
+
+                <label for="inputRoomStatus" class="col-sm-4 control-label">Room&nbsp;Status</label>
+                <div class="col-sm-8">
+                    <input type="text" step="any" class="form-control" id="inputRoomStatus" data-bind="value:RoomStatus" />
+                </div>
+
+                <label for="inputRoomType" class="col-sm-4 control-label">Room&nbsp;Type</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputRoomType" data-bind="value:RoomType" />
+                </div>
+
+                <label for="inputRoomCapacity" class="col-sm-4 control-label">Room&nbsp;Capacity</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputRoomCapacity" data-bind="value:RoomCapacity" />
+                </div>
+
+                <label for="inputRoomDescription" class="col-sm-4 control-label">Room&nbsp;Description</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputRoomDescription" data-bind="value:RoomDescription" />
+                </div>
+
+                <label for="inputRoomPrice" class="col-sm-4 control-label">Room&nbsp;Price</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputRoomPrice" data-bind="value:RoomPrice" />
+                </div>
+                <div>
+                    <div class=" col-lg-12">&nbsp;</div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-8">
+                        </div>
+                     
+                            <span><button class="btn btn-success" data-bind="click: $parent.addRoom" onclick="alert('Added')">Add</button></span>
+                           <span></span>
+                            <span><button class="btn btn-primary" data-bind="click: $parent.updateRoom" onclick="alert('Updated')">Update</button></span>
+                        
+                    </div>
+            </div>
+        </div>
+    </div>
+ </div>
+    </div>
+
+

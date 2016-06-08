@@ -1,0 +1,160 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1>Room Bookings</h1>
+</div>
+
+<div class="btn-group btn-group-justified">
+    <a href="#" class="btn btn-info" onclick="parent.location = 'http://localhost:56128/Shared/ManageBookings'">Bookings</a>
+    <a href="#" class="btn btn-info" onclick="parent.location = 'http://localhost:56128/Shared/ManageRooms'">Rooms</a>
+    <a href="#" class="btn btn-info" onclick="parent.location = 'http://localhost:56128/Shared/ManagePayments'">Payments</a>
+</div>
+
+<div class="col-lg-12">&nbsp;</div>
+<div class="col-lg-12">&nbsp;</div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Bookings</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: bookings">
+                    <li>
+                        @*<p><sub>[<span data-bind="text: BookingId"></span>]</sub><strong><span data-bind="text: Name"></span></strong><br>*@
+                        Booking&nbsp;ID:&nbsp;<span data-bind="text: BookingId"></span><br />
+                        Room&nbsp;ID:&nbsp;<span data-bind="text: RoomId"></span><br />
+                        No.&nbsp;Of&nbsp;Adults:&nbsp;<span data-bind="text: NoOfAdults"></span><br>
+                        No.&nbsp;Of&nbsp;Children:&nbsp;<span data-bind="text: NoOfChildren"></span><br>
+                        Check&nbsp;In&nbsp;Time:&nbsp;<span data-bind="text: CheckInTime"></span><br>
+                        Check&nbsp;Out&nbsp;Time:&nbsp;<span data-bind="text: CheckOutTime"></span><br>
+                        Check&nbsp;In&nbsp;Date:&nbsp;<span data-bind="text: CheckInDate"></span><br>
+                        Check&nbsp;Out&nbsp;Date:&nbsp;<span data-bind="text: CheckOutDate"></span><br>
+                        No.&nbsp;Of&nbsp;Nights:&nbsp;<span data-bind="text: NoOfNights"></span><br>
+                        Total&nbsp;Price:&nbsp;<span data-bind="text: TotalPrice"></span><br>
+                        Room&nbsp;Quantity:&nbsp;<span data-bind="text: RoomQuantity"></span><br>
+                        Additional&nbsp;Remarks:&nbsp;<span data-bind="text: AddRemarks"></span><br>
+                        Special&nbsp;Requests:&nbsp;<span data-bind="text: SpecialRequests"></span><br>
+                        @*</p>*@
+                        <hr />
+                        <div class="col-sm-12">
+                            
+                            <span><button class="btn btn-danger" data-bind="click: $parent.deleteBooking" onclick="alert('Deleted')">Delete</button></span>
+                            <span></span>
+                            <span><button class="btn btn-default" data-bind="click: $parent.populateBookingsForUpdate">Edit</button></span>
+                
+                        <hr />
+                            </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+
+
+<div style="position:fixed" class="col-md-5 col-md-offset-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><strong>Booking Details</strong></h2>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="form-group" data-bind="with: newBooking">
+                <label for="inputNoOfAdults" class="col-sm-4 control-label">No.&nbsp;Of&nbsp;Adults</label>
+                <div class="col-sm-8">
+                    <input type="number" min="01" max="20" class="form-control" id="inputNoOfAdults" data-bind="value:NoOfAdults" />
+                </div>
+
+                <label for="inputNoOfChildren" class="col-sm-4 control-label">No.&nbsp;Of&nbsp;Children</label>
+                <div class="col-sm-8">
+                    <input type="number" min="01" max="20" step="any" class="form-control" id="inputNoOfChildren" data-bind="value:NoOfChildren" />
+                </div>
+
+                <label for="inputCheckInTime" class="col-sm-4 control-label">Check&nbsp;In&nbsp;Time</label>
+                <div class="col-sm-8">
+                    <input type="text" step="any" class="form-control" id="inputCheckInTime" data-bind="value:CheckInTime" />
+                </div>
+
+                <label for="inputCheckOutTime" class="col-sm-4 control-label">Check&nbsp;Out&nbsp;Time</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputCheckOutTime" data-bind="value:CheckOutTime" />
+                </div>
+
+                <label for="inputCheckInDate" class="col-sm-4 control-label">Check&nbsp;In&nbsp;Date</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputCheckInDate" data-bind="value:CheckInDate" />
+                </div>
+
+                <label for="inputCheckOutDate" class="col-sm-4 control-label">Check&nbsp;Out&nbsp;Date</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputCheckOutDate" data-bind="value:CheckOutDate" />
+                </div>
+
+                <label for="inputNoOfNights" class="col-sm-4 control-label">No.&nbsp;Of&nbsp;Nights</label>
+                <div class="col-sm-8">
+                    <input type="number" min="00" max="100" class="form-control" id="inputNoOfNights" data-bind="value:NoOfNights" />
+                </div>
+
+                <label for="inputTotalPrice" class="col-sm-4 control-label">Total&nbsp;Price</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputTotalPrice" data-bind="value:TotalPrice" />
+                </div>
+
+                <label for="inputRoomQuantity" class="col-sm-4 control-label">Room&nbsp;Quantity</label>
+                <div class="col-sm-8">
+                    <input type="number" min="01" max="20" class="form-control" id="inputRoomQuantity" data-bind="value:RoomQuantity" />
+                    @*<select data-bind="options:quantity, selectedOptions: chosenRoomQuantity, optionsText: 'RoomQuantity', value: newBooking.RoomQuantity"></select>*@
+                </div>
+
+                <label for="inputAddRemarks" class="col-sm-4 control-label">Additional&nbsp;Remarks</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputAddRemarks" data-bind="value:AddRemarks" />
+                </div>
+
+                <label for="inputSpecialRequests" class="col-sm-4 control-label">Special&nbsp;Requests</label>
+                <div class="col-sm-8">
+                    <input type="text" step="any" class="form-control" id="inputSpecialRequests" data-bind="value:SpecialRequests" />
+                </div>
+                <div>
+                    <div class=" col-lg-12">&nbsp;</div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-12">
+                        </div>
+                        <div class="col-sm-8">
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" data-bind="click: $parent.updateBooking" onclick="alert('Updated')">Update</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
